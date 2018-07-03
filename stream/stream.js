@@ -25,7 +25,7 @@ const minPartConfidence = 0.1
 /* available devices log */
 navigator.mediaDevices.enumerateDevices()
   .then(devices => {
-    devices.forEach(function(device) {
+    devices.forEach(device => {
       console.log(device.kind + ': ' + device.label + ' id = ' + device.deviceId)
     })
   })

@@ -1,12 +1,22 @@
 const express = require('express')
 
-/* http-server setup */
-const httpServerSettings = {
+/* stream server setup */
+const streamServerSettings = {
   port: 3000,
-  staticPath: 'public'
+  staticPath: 'stream'
 }
-const httpServer = express()
+const streamServer = express()
 
-httpServer.use(express.static(httpServerSettings.staticPath))
-httpServer.listen(httpServerSettings.port)
-console.log('streaming server is running on http://localhost:' + httpServerSettings.port)
+streamServer.use(express.static(streamServerSettings.staticPath))
+streamServer.listen(streamServerSettings.port)
+console.log('streaming server is running on http://localhost:' + streamServerSettings.port)
+
+const visualizationServerSettings = {
+  port: 3001,
+  staticPath: 'visualization'
+}
+const visualizationServer = express()
+
+visualizationServer.use(express.static(visualizationServerSettings.staticPath))
+visualizationServer.listen(visualizationServerSettings.port)
+console.log('visualization server is running on http://localhost:' + visualizationServerSettings.port)
