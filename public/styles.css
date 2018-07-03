@@ -1,0 +1,24 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inconsolata', monospace;
+  overflow: hidden;
+  background: white;
+}
+
+#camera-front, #camera-left, #camera-right {
+  position: absolute;
+  top: 0;
+  left: 0;
+  filter: opacity(50%) grayscale(100%) hue-rotate(0deg) contrast(100%);
+  transition: all 1000ms;
+}
+
+/* #camera-front {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: blur(5px) grayscale(100%);
+} */
