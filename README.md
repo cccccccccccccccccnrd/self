@@ -1,2 +1,2 @@
 # self
-Script that synchronises different camera inputs, based on @tensorflow 
+Synchronises different camera inputs based on human pose estimation w/ @tensorflow 
