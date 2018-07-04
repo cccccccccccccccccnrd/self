@@ -4,6 +4,14 @@ html, body {
 }
 
 body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   background: white;
 }
+
+#visualization {
+  transform: scale(-1, 1);
+}
+
