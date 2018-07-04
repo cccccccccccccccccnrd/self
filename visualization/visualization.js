@@ -28,7 +28,7 @@ function visualize (keypoints, ctx, scale = 1) {
   }
 }
 
-/* clear canvas and optionally extract poses as download */
+/* clear canvas and optionally extract poses as data and visualization */
 function restart (extract = false) {
   if (extract) extractPoses()
 
@@ -37,12 +37,19 @@ function restart (extract = false) {
 }
 
 function extractPoses () {
-  let a = document.createElement('a')
-  let file = new Blob([JSON.stringify(poses)], { type: 'text/plain' })
+  let timestamp = Date.now()
 
-  a.href = URL.createObjectURL(file)
-  a.download = 'poses-' + Date.now() + '.txt'
-  a.click()
+  let aVisualization = document.createElement('a')
+  let image = canvas.toDataURL("image/png")
+  aVisualization.href = image
+  aVisualization.download = timestamp + '-visualization.png'
+  aVisualization.click()
+
+  let aData = document.createElement('a')
+  let file = new Blob([JSON.stringify(poses)], { type: 'text/plain' })
+  aData.href = URL.createObjectURL(file)
+  aData.download = timestamp + '-data.txt'
+  aData.click()
 }
 
 document.onkeydown = document.onkeyup = (event) => {
