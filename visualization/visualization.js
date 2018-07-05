@@ -37,16 +37,16 @@ function restart (extract = false) {
 }
 
 function extractPoses () {
-  let timestamp = Date.now()
+  const timestamp = Date.now()
 
-  let aVisualization = document.createElement('a')
-  let image = canvas.toDataURL("image/png")
+  const aVisualization = document.createElement('a')
+  const image = canvas.toDataURL()
   aVisualization.href = image
   aVisualization.download = timestamp + '-visualization.png'
   aVisualization.click()
 
-  let aData = document.createElement('a')
-  let file = new Blob([JSON.stringify(poses)], { type: 'text/plain' })
+  const aData = document.createElement('a')
+  const file = new Blob([JSON.stringify(poses)], { type: 'text/plain' })
   aData.href = URL.createObjectURL(file)
   aData.download = timestamp + '-data.txt'
   aData.click()
