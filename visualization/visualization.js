@@ -21,6 +21,12 @@ function visualize (keypoints, ctx, scale = 1) {
     }
 
     const { y, x } = keypoint.position
+    /* const gradient = ctx.createRadialGradient(x, y, 0, x, y, 500)
+    gradient.addColorStop(0, 'red')
+    gradient.addColorStop(1, 'black')
+    ctx.fillStyle = gradient
+    ctx.fillRect(0, 0, canvas.width, canvas.height) */
+
     ctx.beginPath()
     ctx.arc(x * scale, y * scale, 1, 0, 2 * Math.PI)
     ctx.fillStyle = 'rgb(255, 0, 0)'
