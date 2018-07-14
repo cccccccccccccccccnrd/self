@@ -5,10 +5,10 @@ const cameras = [{
   deviceId: '9a26207fa19a3e90ce766af1cca4ae5ce6b99f8d5179fffcad9e107c13c5dc0b'
 }, {
   position: 'left',
-  deviceId: '401c6c3596eccafb6d8c2906ac76567929b3261487c9b5c885dc9c05d210c469'
+  deviceId: '9a26207fa19a3e90ce766af1cca4ae5ce6b99f8d5179fffcad9e107c13c5dc0b'
 }, {
   position: 'right',
-  deviceId: '344051993c9332ed0f8d1a31f73016599baf95e5cca3010b41615c790294bd37'
+  deviceId: '9a26207fa19a3e90ce766af1cca4ae5ce6b99f8d5179fffcad9e107c13c5dc0b'
 }]
 
 let network
@@ -18,7 +18,7 @@ const flipHorizontal = true
 const outputStride = 32
 const minPartConfidence = 0.1
 
-init(1)
+init(1, false)
 
 /* available devices log */
 navigator.mediaDevices.enumerateDevices()
@@ -30,15 +30,15 @@ navigator.mediaDevices.enumerateDevices()
   .catch(err => console.log(err.name + ': ' + err.message))
 
 /* initializes video elements and stream */
-function init (limit) {
+function init (limit, detection = false) {
   cameras.slice(0, limit).forEach (camera => {
-    let video = document.createElement('video')
+    const video = document.createElement('video')
     video.setAttribute('id', camera.position)
     video.setAttribute('width', '1280')
     video.setAttribute('height', '720')
     document.body.appendChild(video)
 
-    stream(video, camera.deviceId, true)
+    stream(video, camera.deviceId, detection)
   })
 }
 

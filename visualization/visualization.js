@@ -29,7 +29,7 @@ function visualize (keypoints, ctx, scale = 1) {
 
     ctx.beginPath()
     ctx.arc(x * scale, y * scale, 1, 0, 2 * Math.PI)
-    ctx.fillStyle = 'rgb(255, 0, 0)'
+    ctx.fillStyle = 'rgb(0, 0, 0)'
     ctx.fill()
   }
 }
