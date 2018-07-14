@@ -1,2 +1,1 @@
-# self
-Synchronizes different camera inputs based on human pose estimation w/ @tensorflow
+![self](http://tinyimg.io/i/Dp58hh8.gif "self")
