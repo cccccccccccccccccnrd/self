@@ -68,7 +68,7 @@ async function poseDetectionFrame (camera) {
 
   if (socket.readyState == 1) socket.send(JSON.stringify(pose))
 
-  repositionCamera(camera, pose.keypoints, minPartConfidence)
+  repositionCamera(camera, pose.keypoints)
 
   requestAnimationFrame(() => {
     poseDetectionFrame(camera)
@@ -76,10 +76,10 @@ async function poseDetectionFrame (camera) {
 }
 
 /* synchronizing camera */
-function repositionCamera (camera, keypoints, minConfidence) {
+function repositionCamera (camera, keypoints) {
   const keypoint = keypoints[0]
 
-  if (keypoint.score < minConfidence) {
+  if (keypoint.score < minPartConfidence) {
     camera.style.opacity = '0'
   } else {
     camera.style.opacity = null
