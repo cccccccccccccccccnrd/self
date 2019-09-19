@@ -4,14 +4,21 @@ html, body {
 }
 
 body {
+  font-family: 'Inconsolata', monospace;
   overflow: hidden;
   background: white;
 }
 
-video {
+#camera-front, #camera-left, #camera-right {
   position: absolute;
   top: 0;
   left: 0;
-  filter: opacity(15%) grayscale(100%) hue-rotate(0deg) contrast(100%);
-  transition: all 250ms;
+  filter: opacity(30%) grayscale(100%) hue-rotate(0deg) contrast(100%);
+  transition: all 1000ms;
 }
+
+/* .camera {
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: blur(5px) grayscale(100%);
+} */
