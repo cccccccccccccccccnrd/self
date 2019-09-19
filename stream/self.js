@@ -19,14 +19,19 @@ const minPartConfidence = 0.1
 /* available devices log */
 navigator.mediaDevices.enumerateDevices()
   .then((devices) => {
-    const inputs = devices.filter((device) => device.kind === 'videoinput' && device.label.includes('USB'))
+    const inputs = devices.filter((device) => device.kind === 'videoinput')
+
+    if (inputs.length === 0) {
+      return console.log('%cno USB cameras detected', 'padding: 5px; background: red; color: white;')
+    }
 
     Array.prototype.forEach.call(cameras, (camera, index) => {
-      console.log(`streaming ${ camera.id }: ${ inputs[index].deviceId }`)
+      if (!inputs[index]) console.log('%cNo camera found, provide enough for all .camera elements', 'padding: 5px; background: red; color: white;')
+      console.log(`%cStreaming ${ inputs[index].label }`, 'padding: 5px; background: blue; color: white;')
       stream(camera, inputs[index].deviceId, true)
     })
   })
-  .catch(err => console.log(err.name + ': ' + err.message))
+  .catch((error) => console.warn(error))
 
 /* stream multiple devices */
 function stream (camera, cameraDeviceId, detection = false) {
