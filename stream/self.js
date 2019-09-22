@@ -19,7 +19,7 @@ const minPartConfidence = 0.1
 /* available devices log */
 navigator.mediaDevices.enumerateDevices()
   .then((devices) => {
-    const inputs = devices.filter((device) => device.kind === 'videoinput')
+    const inputs = devices.filter((device) => device.kind === 'videoinput' && !device.label.includes('FaceTime'))
 
     if (inputs.length === 0) {
       return console.log('%cno USB cameras detected', 'padding: 5px; background: red; color: white;')
