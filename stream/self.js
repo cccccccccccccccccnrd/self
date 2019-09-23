@@ -8,15 +8,8 @@ setInterval(() => {
   location.reload(true)
 }, 1000 * 60 * 60)
 
-/* detection variables */
 let network
 
-const imageScaleFactor = 0.2
-const flipHorizontal = true
-const outputStride = 32
-const minPartConfidence = 0.1
-
-/* available devices log */
 navigator.mediaDevices.enumerateDevices()
   .then((devices) => {
     const inputs = devices.filter((device) => device.kind === 'videoinput' && !device.label.includes('FaceTime'))
@@ -33,10 +26,9 @@ navigator.mediaDevices.enumerateDevices()
   })
   .catch((error) => console.warn(error))
 
-/* stream multiple devices */
 function stream (camera, cameraDeviceId, detection = false) {
   navigator.mediaDevices.getUserMedia({ audio: false, video: { width: { ideal: 650 }, height: { ideal: 650 }, deviceId: { exact: cameraDeviceId } } })
-    .then(stream => {
+    .then((stream) => {
       camera.srcObject = stream
       camera.play()
     })
@@ -59,9 +51,9 @@ async function detect (camera) {
 }
 
 async function poseDetectionFrame (camera) {
-  const pose = await network.estimateSinglePose(camera, imageScaleFactor, flipHorizontal, outputStride)
+  const pose = await network.estimateSinglePose(camera, imageScaleFactor = 0.2, flipHorizontal = true, outputStride = 32)
 
-  repositionCamera(camera, pose.keypoints, minPartConfidence)
+  repositionCamera(camera, pose.keypoints, minPartConfidence = 0.1)
 
   requestAnimationFrame(() => {
     poseDetectionFrame(camera)
