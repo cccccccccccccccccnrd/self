@@ -41,7 +41,6 @@ function stream (camera, cameraDeviceId, detection = false) {
   })
 }
 
-/* pose detection */
 async function detect (camera) {
   await posenet.load()
     .then((net) => {
